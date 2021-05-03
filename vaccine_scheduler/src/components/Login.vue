@@ -68,8 +68,8 @@
           </b-form-group>
 
           <b-form-group id="create-group-13" label="Sex" v-slot="{ ariaDescribedby }" label-cols-sm="4" content-cols-lg="7">
-            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="0">Male</b-form-radio>
-            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="1">Female</b-form-radio>
+            <b-form-radio v-model="create_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="0">Male</b-form-radio>
+            <b-form-radio v-model="create_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="1">Female</b-form-radio>
           </b-form-group>
 
           <b-form-group id="create-group-14" label="Social Security Number:" label-for="create-14" label-cols-sm="4" content-cols-lg="7">
@@ -126,8 +126,8 @@ export default {
   data() {
     return {
       login: {
-        email: "",
-        password: ""
+        email: "peterheald8@gmail.com",
+        password: "password123"
       },
 
       create_form: {
@@ -282,7 +282,7 @@ export default {
       let sql = `SELECT * FROM Users WHERE email="${this.noApostraphe(email)}" AND password="${this.noApostraphe(password)}" LIMIT 1`;
       return this.$http.post("http://linkupbeatz.com/API/COVID", {auth: "zBhk9XhwRNdrEBZYth4h46cPH4gXqTcpv9YvFJNfsEvDSPbSdh", sql: sql}).then(res => {
         console.log(res);
-        if (res.body.status == "ERROR") {
+        if (res.body.status == "ERROR" || res.body.rows.length == 0) {
           throw Error("could not retrieve user");
         } else {
           this.user_info = res.body.rows[0];
