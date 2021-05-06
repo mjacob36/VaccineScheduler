@@ -120,10 +120,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   width: 100vw;
-  max-height: 100vh;
   max-width: 100vw;
-  overflow: hidden;
-  height: 100vh;
   margin: 0;
 }
 
