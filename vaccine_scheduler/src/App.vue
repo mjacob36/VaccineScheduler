@@ -3,6 +3,8 @@
     <my-nav v-if="user_info.id != null" :user_info="user_info" :USER_TYPES="USER_TYPES" @open_user_info="show_user_info=true"/>
     <login v-if="user_info.id == null" @logged_in="this.logged_in"/>
     <admin v-if="user_info.user_type != null && user_info.user_type == USER_TYPES['ADMIN']" :USER_TYPES="USER_TYPES" :user_info="user_info"/>
+    <nurse v-if="user_info.user_type != null && user_info.user_type == USER_TYPES['NURSE'] && retrieved_extra_info == true" :USER_TYPES="USER_TYPES" :user_info="user_info"/>
+    <patient v-if="user_info.user_type != null && user_info.user_type == USER_TYPES['PATIENT'] && retrieved_extra_info == true" :USER_TYPES="USER_TYPES" :user_info="user_info"/>
 
     <transition name="fade">
       <user-info-page v-if="show_user_info == true" :user_info="user_info" :USER_TYPES="USER_TYPES" @update_user_info="this.update_user_info" @close="show_user_info = false"/>
@@ -15,6 +17,8 @@ import Login from './components/Login.vue'
 import MyNav from './components/Nav.vue'
 import UserInfoPage from './components/UserInfo.vue'
 import Admin from './components/Admin.vue'
+import Nurse from './components/Nurse.vue'
+import Patient from './components/Patient.vue'
 
 export default {
   name: 'App',
@@ -22,7 +26,9 @@ export default {
     Login,
     MyNav,
     UserInfoPage,
-    Admin
+    Admin,
+    Nurse,
+    Patient
   },
 
   data() {
@@ -33,6 +39,7 @@ export default {
         "NURSE": 1,
         "PATIENT": 2
       },
+      retrieved_extra_info: false,
       show_user_info: false,
     }
   },
@@ -47,8 +54,10 @@ export default {
       if (this.user_info.user_type == this.USER_TYPES["PATIENT"]) {
         console.log("HEREBOY");
         await this.getPatientInfo(this.user_info.id);
+        this.retrieved_extra_info = true;
       } else if (this.user_info.user_type == this.USER_TYPES["NURSE"]) {
         await this.getNurseInfo(this.user_info.id);
+        this.retrieved_extra_info = true;
       }
       
       console.log(this.user_info);

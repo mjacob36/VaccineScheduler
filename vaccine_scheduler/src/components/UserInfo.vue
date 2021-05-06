@@ -1,6 +1,7 @@
 <template>
     <div id="user_info">
         <b-button id="close" size="lg" @click="close()"><b-icon icon="x-circle"></b-icon></b-button>
+        <h1 style="margin-top: 7rem">User Info</h1>
         <div id="form">
             <b-form @submit="onSubmit2($event)">
                 <b-form-group
@@ -16,31 +17,32 @@
                     v-model="user_form.email"
                     type="email"
                     required
+                    :disabled="user_info.user_type == USER_TYPES['NURSE']"
                 ></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-2" label="Password" label-for="form-2" label-cols-sm="4" content-cols-lg="7">
-                <b-form-input id="form-2" type="password" v-model="user_form.password" aria-describedby="password-help-block" required></b-form-input>
+                <b-form-input id="form-2" type="password" v-model="user_form.password" aria-describedby="password-help-block" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-3" label="Confirm Password" label-for="form-3" :invalid-feedback="invalidFeedback" :state="equal_state" label-cols-sm="4" content-cols-lg="7">
-                <b-form-input id="form-3" type="password" v-model="user_form.password2" aria-describedby="password-help-block" required></b-form-input>
+                <b-form-input id="form-3" type="password" v-model="user_form.password2" aria-describedby="password-help-block" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-4" label="First Name" label-for="form-4" label-cols-sm="4" content-cols-lg="7">
-                <b-form-input id="form-4" type="text" v-model="user_form.first_name" required></b-form-input>
+                <b-form-input id="form-4" type="text" v-model="user_form.first_name" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-5" label="Last Name" label-for="form-5" label-cols-sm="4" content-cols-lg="7">
-                <b-form-input id="form-5" type="text" v-model="user_form.last_name" required></b-form-input>
+                <b-form-input id="form-5" type="text" v-model="user_form.last_name" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-6" label="Middle Initial" label-for="form-6" label-cols-sm="4" content-cols-lg="7">
-                <b-form-input id="form-6" type="text" v-model="user_form.middle_initial" required></b-form-input>
+                <b-form-input id="form-6" type="text" v-model="user_form.middle_initial" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="form-group-7" label="Date of Birth" label-for="form-7" label-cols-sm="4" content-cols-lg="7">
-                <b-form-datepicker id="form-7" v-model="user_form.birth_date" class="mb-2" required></b-form-datepicker>
+                <b-form-datepicker id="form-7" v-model="user_form.birth_date" class="mb-2" required :disabled="user_info.user_type == USER_TYPES['NURSE']"></b-form-datepicker>
                 </b-form-group>
 
                 <b-form-group id="form-group-8" label="Phone Number" label-for="form-8" label-cols-sm="4" content-cols-lg="7">
@@ -52,8 +54,8 @@
                 </b-form-group>
 
                 <b-form-group id="form-group-13" label="Sex" v-slot="{ ariaDescribedby }" label-cols-sm="4" content-cols-lg="7">
-                <b-form-radio v-model="user_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="0">Male</b-form-radio>
-                <b-form-radio v-model="user_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="1">Female</b-form-radio>
+                <b-form-radio v-model="user_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="0" :disabled="user_info.user_type == USER_TYPES['NURSE']">Male</b-form-radio>
+                <b-form-radio v-model="user_form.sex" :aria-describedby="ariaDescribedby" name="some-radios" value="1" :disabled="user_info.user_type == USER_TYPES['NURSE']">Female</b-form-radio>
                 </b-form-group>
                 
                 <div v-if="user_info.user_type == USER_TYPES['PATIENT']">
@@ -249,6 +251,8 @@ export default {
     height: 100vh;
     top: 0;
     background: white;
+    z-index: 1000;
+    font-family: roboto;
 }
 
 #form {

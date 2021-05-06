@@ -39,7 +39,7 @@
                     <b-form-input id="create-7" type="number" v-model="user_form.Hold" required></b-form-input>
                 </b-form-group>
 
-                <b-button type="submit" id="createbtn" variant="success">Create Nurse</b-button>
+                <b-button type="submit" id="createbtn" variant="success">Create Vaccine</b-button>
             </b-form>
         </div>
     </div>
