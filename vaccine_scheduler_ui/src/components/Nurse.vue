@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      ALL_TIMES: [{val: 8, str: "8am"}, {val: 9, str: "9am"}, {val: 10, str: "10am"}, {val: 11, str: "11am"}, {val: 12, str: "12pm"}, {val: 13, str: "1pm"}, {val: 14, str: "2am"}, {val: 15, str: "3am"}, {val: 16, str: "4am"}, {val: 17, str: "5am"}],
+      ALL_TIMES: [{val: 8, str: "8am"}, {val: 9, str: "9am"}, {val: 10, str: "10am"}, {val: 11, str: "11am"}, {val: 12, str: "12pm"}, {val: 13, str: "1pm"}, {val: 14, str: "2pm"}, {val: 15, str: "3pm"}, {val: 16, str: "4pm"}, {val: 17, str: "5pm"}],
     
       selectedDay: null,
       timeslots: [],
