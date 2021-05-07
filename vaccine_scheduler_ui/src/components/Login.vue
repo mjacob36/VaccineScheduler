@@ -126,30 +126,30 @@ export default {
   data() {
     return {
       login: {
-        email: "peterheald8@gmail.com",
-        password: "password123"
+        email: null,
+        password: null
       },
 
       create_form: {
-        email: "peterheald8@gmail.com",
-        password: "password123",
-        password2: "password123",
-        first_name: "Peter",
-        last_name: "Heald",
-        middle_initial: "G",
-        birth_date: "2000-01-01",
-        phone_number: "6209392099",
+        email: null,
+        password: null,
+        password2: null,
+        first_name: null,
+        last_name: null,
+        middle_initial: null,
+        birth_date: null,
+        phone_number: null,
         address: {
-          street_address: "1234 Lake Avenue",
-          city: "Chicago",
-          state: "IL",
-          zipcode: "60504"
+          street_address: null,
+          city: null,
+          state: null,
+          zipcode: null
         },
-        sex: "0",
-        SSN: "620987654",
-        medical_history: "I am a ghost",
-        occupation_class: "Dying",
-        race: "Dead"
+        sex: null,
+        SSN: null,
+        medical_history: null,
+        occupation_class: null,
+        race: null
       },
 
       user_id: null,
